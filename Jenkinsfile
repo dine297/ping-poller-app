@@ -18,7 +18,7 @@ pipeline {
         stage('Build Docker Image') {
                 steps {
                     script {
-                        def dockerImageTag = "Ping-Poller:${BUILD_NUMBER}.0.0"
+                        def dockerImageTag = "ping-poller:${BUILD_NUMBER}.0.0"
                         
                         // Build the Docker image using the Dockerfile in the repository
                         sh "docker build -t ${dockerImageTag} ."
