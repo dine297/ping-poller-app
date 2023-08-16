@@ -83,16 +83,18 @@ pipeline {
         stage('Push to manifest') {
                 steps {
 
-                    withCredentials([string(credentialsId: 'dinegithub', variable: 'gittoken')]) {
+                    withCredentials([string(credentialsId: 'dinegittoken', variable: 'GITTOKEN')]) {
 
-                        sh "git config user.email 'dine297@gmail.com'"
-                        sh "git config user.name 'Dinesh Murthy'"
-                        sh "git add ."
-                        sh "git commit -m 'updated the image id'"
-                        sh "git push"
-                        sh "git push https://${gittoken}@github.com/dine297/ping-poller-manifest.git"
+                        sh """
+                            git config user.email 'dine297@gmail.com'
+                            git config user.name 'Dinesh Murthy'
+                            git add .
+                            git commit -m 'updated the image id'
+                            git push https://${GITTOKEN}@github.com/dine297/ping-poller-manifest.git
+
+                        """
                     }
-
+                        //sh "git push"
 
 
                 }
