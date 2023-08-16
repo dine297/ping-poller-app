@@ -38,16 +38,15 @@ pipeline {
                     //     sh "docker push ${dockerImageTag}"
                     // }
 
-                    withCredentials([string(credentialsId: 'dockerhub-login', variable: 'dockerlogin')]) {
+                    withCredentials([usernamePassword(credentialsId: 'dinedockerhub', passwordVariable: 'DOCKERHUBPASS', usernameVariable: 'DOCKERHUBUSER')]) {
                         def dockerImageTag = "dine297/ping-poller-doc-img:${BUILD_NUMBER}.0.0"
-                        def dockerHubCredentials = credentials('dockerhub-login') // Use the ID you gave to the credential
-                        
-                        // Authenticate with Docker Hub
-                        sh "docker login -u dine297 -p ${dockerlogin}"
-                        
-                        // Push the Docker image to Docker Hub
+
+                        sh "docker login -u ${DOCKERHUBUSER} -p ${DOCKERHUBPASS}"
+
                         sh "docker push ${dockerImageTag}"
+
                     }
+
                 }
             }
 
