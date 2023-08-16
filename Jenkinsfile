@@ -55,11 +55,11 @@ pipeline {
         }
         stage('Apply Manifest') {
                 steps {
-                    script {
-                        sh "kubectl apply -f ping-poller-deploy.yaml"
-                        sh "kubectl apply -f ping-poller-svc.yaml"
 
-                    }
+                    sh "kubectl apply -f ping-poller-deploy.yaml"
+                    sh "kubectl apply -f ping-poller-svc.yaml"
+
+
                 }
             }
 
