@@ -80,6 +80,19 @@ pipeline {
                 }
             }
         }
+        stage('Push to manifest') {
+                steps {
+
+                    withCredentials([string(credentialsId: 'dinegithub', variable: 'gittoken')]) {
+                    sh "git add ."
+                    sh "git commit -m 'updated the image id'"
+                    sh "git push"
+                }
+
+
+                }
+            }
+
         stage('Apply Manifest') {
                 steps {
 
