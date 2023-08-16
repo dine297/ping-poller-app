@@ -84,10 +84,15 @@ pipeline {
                 steps {
 
                     withCredentials([string(credentialsId: 'dinegithub', variable: 'gittoken')]) {
-                    sh "git add ."
-                    sh "git commit -m 'updated the image id'"
-                    sh "git push"
-                }
+
+                        sh "git config user.email 'dine297@gmail.com'"
+                        sh "git config user.name 'Dinesh Murthy'"
+                        sh "git add ."
+                        sh "git commit -m 'updated the image id'"
+                        sh "git push"
+                        sh" git push https://${gittoken}@github.com/dine297/ping-poller-manifest.git "
+                    }
+
 
 
                 }
