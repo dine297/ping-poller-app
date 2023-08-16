@@ -28,16 +28,18 @@ pipeline {
         stage('Push Docker Image to Docker Hub') {
                 steps {
                     script {
-                        //def dockerImageTag = "your-docker-image-tag:latest"
+                        def dockerImageTag = "dine297/ping-poller-doc-img:${BUILD_NUMBER}.0.0"
+                        def dockerHubCredentials = credentials('dockerhub-login') // Use the ID you gave to the credential
                         
                         // Authenticate with Docker Hub
-                        sh "docker login -u dine297@gmail.com -p Networkserver@2023"
+                        sh "docker login -u dine297 -p ${dockerHubCredentials}"
                         
                         // Push the Docker image to Docker Hub
-                        sh "docker push dine297/ping-poller-doc-img/${dockerImageTag}"
+                        sh "docker push ${dockerImageTag}"
                     }
-                }       
+                }
             }
+
 
 
     }
