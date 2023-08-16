@@ -90,7 +90,7 @@ pipeline {
                         sh "git add ."
                         sh "git commit -m 'updated the image id'"
                         sh "git push"
-                        sh" git push https://${gittoken}@github.com/dine297/ping-poller-manifest.git "
+                        sh "git push https://${gittoken}@github.com/dine297/ping-poller-manifest.git"
                     }
 
 
