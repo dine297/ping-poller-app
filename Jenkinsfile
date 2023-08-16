@@ -69,23 +69,14 @@ pipeline {
         stage('Update YAML Image') {
             steps {
                 script {
+                    
                     def newImage = "dine297/ping-poller-doc-img:${BUILD_NUMBER}.0.0"
                     def yamlFilePath = "ping-poller-deploy.yaml"
+
+                    def yaml = readYaml(file: "${yamlFilePath}")
+                    yaml.spec.template.spec.containers[0].image = "${newImage}"
+                    writeYaml(file: "${yamlFilePath}", data: yaml, overwrite: true )
                     
-                    // Read the YAML file content
-                    def yamlContent = readFile(file: yamlFilePath).trim()
-                    
-                    // Parse YAML content
-                    def yaml = readYaml(text: yamlContent)
-                    
-                    // Update the image in the first container of the Deployment spec
-                    yaml.spec.template.spec.containers[0].image = newImage
-                    
-                    // Convert the updated YAML back to text
-                    def updatedYaml = writeYaml(yaml)
-                    
-                    // Write the updated content back to the YAML file
-                    writeFile(file: yamlFilePath, text: updatedYaml)
                 }
             }
         }
