@@ -89,7 +89,7 @@ pipeline {
                             git config user.name 'Dinesh Murthy'
                             git add .
                             git commit -m 'updated the image id'                            
-                            git push https://${GITTOKEN}@github.com/dine297/ping-poller-manifest.git
+                            git push orgin master https://${GITTOKEN}@github.com/dine297/ping-poller-manifest.git
 
                         """
                     }
