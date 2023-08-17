@@ -15,9 +15,8 @@ pipeline {
                     checkout([$class: 'GitSCM',
                             branches: [[name: '*/master']], // Change 'master' to your desired branch
                             userRemoteConfigs: [[url: 'https://github.com/dine297/ping-poller-app.git']], // Replace with your repo URL
-                            extensions: [
-                                extensions: [[$class: 'CloneOption', depth: 1, shallow: true]]
-                            ]
+                            extensions: [[$class: 'CloneOption', depth: 1, shallow: true]]
+                            
                     ])
                 }
         }
@@ -53,9 +52,8 @@ pipeline {
                     checkout([$class: 'GitSCM',
                             branches: [[name: '*/master']], // Change 'master' to your desired branch
                             userRemoteConfigs: [[url: 'https://github.com/dine297/ping-poller-manifest.git']], // Replace with your repo URL
-                            extensions: [
-                                extensions: [[$class: 'CloneOption', depth: 1, shallow: true]]
-                            ]
+                            extensions: [[$class: 'CloneOption', depth: 1, shallow: true]]
+                            
                     ])
                 }
         }
