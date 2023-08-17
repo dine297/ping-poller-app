@@ -97,8 +97,8 @@ pipeline {
                         //sh "git push"
 
 
-        //         }
-        //     }
+                }
+            }
 
         // stage('Apply Manifest') {
         //         steps {
