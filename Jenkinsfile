@@ -58,11 +58,11 @@ pipeline {
                 }
         }
 
-        // stage('switch to master branch') {
-        //     steps {
-        //         sh "git checkout master"
-        //     }
-        // }
+        stage('switch to master branch') {
+            steps {
+                sh "git checkout master"
+            }
+        }
 
         stage('Update YAML Image') {
             steps {
