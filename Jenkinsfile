@@ -89,7 +89,7 @@ pipeline {
                             git config user.email 'dine297@gmail.com'
                             git config user.name 'Dinesh Murthy'
                             git add .
-                            git commit -m 'updated the image id'
+                            git commit -m 'updated the image id'                            
                             git push https://${GITTOKEN}@github.com/dine297/ping-poller-manifest.git
 
                         """
@@ -97,18 +97,18 @@ pipeline {
                         //sh "git push"
 
 
-                }
-            }
+        //         }
+        //     }
 
-        stage('Apply Manifest') {
-                steps {
+        // stage('Apply Manifest') {
+        //         steps {
 
-                    sh "kubectl apply -f ping-poller-deploy.yaml"
-                    sh "kubectl apply -f ping-poller-svc.yaml"
+        //             sh "kubectl apply -f ping-poller-deploy.yaml"
+        //             sh "kubectl apply -f ping-poller-svc.yaml"
 
 
-                }
-            }
+        //         }
+        //     }
 
 
     }
