@@ -16,7 +16,7 @@ pipeline {
                             branches: [[name: '*/master']], // Change 'master' to your desired branch
                             userRemoteConfigs: [[url: 'https://github.com/dine297/ping-poller-app.git']], // Replace with your repo URL
                             extensions: [
-                                [$class: 'CloneOption', depth: 1], // Shallow clone (depth: 1)
+                                extensions: [[$class: 'CloneOption', depth: 1, shallow: true]]
                             ]
                     ])
                 }
@@ -54,7 +54,7 @@ pipeline {
                             branches: [[name: '*/master']], // Change 'master' to your desired branch
                             userRemoteConfigs: [[url: 'https://github.com/dine297/ping-poller-manifest.git']], // Replace with your repo URL
                             extensions: [
-                                [$class: 'CloneOption', depth: 1], // Shallow clone (depth: 1)
+                                extensions: [[$class: 'CloneOption', depth: 1, shallow: true]]
                             ]
                     ])
                 }
