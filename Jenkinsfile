@@ -73,6 +73,7 @@ pipeline {
                     def newImage = "dine297/ping-poller-doc-img:${BUILD_NUMBER}.0.0"
                     def yamlFilePath = "ping-poller-deploy.yaml"
 
+
                     def yaml = readYaml(file: "${yamlFilePath}")
                     yaml.spec.template.spec.containers[0].image = "${newImage}"
                     writeYaml(file: "${yamlFilePath}", data: yaml, overwrite: true )
